@@ -41,7 +41,7 @@ Dataset diambil dari CelebA (Celebrity Faces Attributes), Dataset merupakan kump
 
 ### 2. Data Augmentation 
 
-Untuk meningkatkan keragaman dataset pelatihan dan meningkatkan ketangguhan model, teknik augmentasi data berikut diterapkan selama pra-pemrosesan gambar:
+Untuk meningkatkan keragaman dataset pelatihan dan meningkatkan ketangguhan model, teknik augmentasi data berikut diterapkan selama preprocessing gambar:
 
     rescale=1.0 / 255 (Normalization)
     rotation_range=20
@@ -79,6 +79,8 @@ Strategi augmentasi ini berkontribusi pada dataset pelatihan yang lebih beragam 
 
 #### * Hyperparameter :
 
+Dalam proyek ini, beberapa hyperparameter dikonfigurasi untuk mengoptimalkan kinerja model. Berikut adalah beberapa hyperparameter yang digunakan :
+
     Optimizer: Adam
     Learning rate: 0.0001
     Image Size: 218 x 178
@@ -90,13 +92,13 @@ Strategi augmentasi ini berkontribusi pada dataset pelatihan yang lebih beragam 
 
 ### 4. Training & Optimization
 
-Pada tahap ini, dilakukan pelatihan dan optimasi model menggunakan beberapa arsitektur yang berbeda, yaitu VGG16, VGG19, ResNet50, ResNet101, dan GoogleNet (Kaggle Model). Proses ini dilakukan untuk mencari arsitektur yang memberikan hasil terbaik pada dataset CelebA.
+Pada tahap ini, dilakukan pelatihan dan optimasi model menggunakan beberapa arsitektur dan algoritma yang berbeda, yaitu VGG16, VGG19, ResNet50, ResNet101, dan GoogleNet. Proses ini dilakukan untuk mencari arsitektur yang memberikan hasil terbaik pada dataset CelebA untuk tujuan klasifikasi gender.
 
 #### * Proses Pelatihan
 
-    Setiap model diinisialisasi dengan bobot awal.
+    Setiap model diinisialisasi dengan Class Weight (Female : 0.833, Male : 1.25) untuk mengimbangi Imbalance Data
     3200 data gambar dengan beragam augmentasi digunakan untuk melatih model.
-    Pengoptimalan dilakukan dengan menggunakan algoritma transfer learning dan loss function yang sesuai.
+    Pengoptimalan dilakukan dengan fine tuning dan dan menggunakan algoritma transfer learning.
 
 #### * Grafik Pelatihan
 
@@ -136,18 +138,18 @@ Berikut adalah tabel yang menunjukkan data akurasi validasi dari setiap arsitekt
 
 ### Perbandingan Test Results
 
-Pada tahap ini, hasil pengujian model dari setiap algoritma dari fine tuning dan transfer learning dibandingkan untuk mendapatkan pemahaman yang lebih baik tentang kinerja relatif masing-masing model. Grafik di bawah ini memvisualisasikan hasil pengujian dari setiap algoritma pada dataset CelebA. Data yang diukur adalah akurasi test pada setiap algoritma selama pengujian. 
+Pada tahap ini, hasil pengujian model dari setiap algoritma pengoptimalan fine tuning dan transfer learning dibandingkan untuk mendapatkan pemahaman yang lebih baik tentang kinerja relatif masing-masing model. Grafik di bawah ini memvisualisasikan hasil pengujian dari setiap algoritma pada dataset CelebA. Data yang diukur adalah akurasi test pada setiap algoritma selama pengujian. 
 
 <p align="center">
   <img src="https://github.com/triwahyupra/project1_gender_recognition/blob/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/thumbnail%20picture/Model%20Accuraacy%20Fine%20Tuning.png" alt="Grafik accuracy fine tuning" width="500" height="400" style="margin-right: 20px; margin-bottom: 10px;" />
   <img src="https://github.com/triwahyupra/project1_gender_recognition/blob/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/thumbnail%20picture/Model%20Accuracy%20Transfer%20Learning.png" alt="Grafik accuracy transfer learning" width="500" height="400" />
 </p>
 
-Dari hasil train dan evaluation, terlihat bahwa ResNet101 mencapai akurasi validasi tertinggi, menunjukkan bahwa arsitektur ini mungkin merupakan pilihan yang baik untuk tugas klasifikasi pada dataset CelebA.
+Dari hasil train dan evaluation, terlihat bahwa ResNet50 dan ResNet101 mencapai akurasi validasi yang relatif sama dan merupakan yang tertinggi dari pengoptimalan fine tuning dengan selisih hanya 0,10%, hal ini menunjukkan bahwa arsitektur ini mungkin merupakan pilihan yang baik untuk tugas klasifikasi gender pada dataset CelebA.
 
 ### Inference Time
 
-Pada tahap ini, waktu inference dari setiap model diperhitungkan untuk membandingkan kecepatan model dalam memproses data uji. Berikut data inference time pada setiap model dari pengujian fine tuning dan transfer learning :
+Pada tahap ini, waktu inference dari setiap arsirtektur diperhitungkan untuk membandingkan kecepatan model dalam memproses data uji. Berikut data inference time pada setiap model dari pengujian fine tuning dan transfer learning :
 
     Fine Tuning :
     VGG19 : 12 s
@@ -164,13 +166,13 @@ Pada tahap ini, waktu inference dari setiap model diperhitungkan untuk membandin
     GoogleNet: 12s
 
 ### Prediction Results on Test Data
-Berikut adalah beberapa gambar yang diambil dari data tes dan kemudian dilakukan prediksi gender menggunakan model terbaiik dari segi akurasi tertinggi dan inference time tercepat yaitu ResNet101 :
+Memperhitungkan hasil akurasi tes dan inference time, model dari arsitektur ResNet50 dipilih sebagai model yang digunakan untuk deployment. Berikut adalah beberapa gambar yang diambil dari data tes dan kemudian dilakukan prediksi gender menggunakan model terbaiik dari segi pertimbangan akurasi tertinggi dan inference time yaitu ResNet50 :
 
 <img align="center" src="https://github.com/triwahyupra/project1_gender_recognition/blob/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/thumbnail%20picture/predict%20data%20test.png" alt="Predict Test" width="1000" height="800">
 
 ### Real World Application : [(DEPLOYMENT)](https://s.id/GenderRecog)
 
-Pada tahap ini, kita akan mendeploy model ResNet101 menggunakan Gradio in HuggingFace untuk menyajikan antarmuka pengguna yang sederhana untuk penggunaan model. Gradio menyediakan cara mudah untuk membangun antarmuka pengguna interaktif untuk model machine learning. Dengan menggunakan Gradio in HuggingFace, kita dapat dengan mudah membuat antarmuka yang intuitif, memberikan prediksi gender secara langsung melalui antarmuka web yang dapat diakses pada link diatas. Dibawah ini merupakan tampilan hasil dari prediksi gender secara real :
+Pada tahap ini, kita akan mendeploy model ResNet50 menggunakan Gradio in HuggingFace untuk menyajikan antarmuka pengguna yang sederhana untuk penggunaan model. Gradio menyediakan cara mudah untuk membangun antarmuka pengguna interaktif untuk model machine learning. Dengan menggunakan Gradio in HuggingFace, kita dapat dengan mudah membuat antarmuka yang intuitif, memberikan prediksi gender secara langsung melalui antarmuka web yang dapat diakses pada link diatas. Dibawah ini merupakan tampilan hasil dari prediksi gender dari data gambar diluar dataset CelebA :
 
 <img align="center" src="https://github.com/triwahyupra/project1_gender_recognition/blob/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/thumbnail%20picture/deploy.png" alt="Deployment" width="1000" height="500">
 
