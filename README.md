@@ -176,12 +176,14 @@ Pada tahap ini, kita akan mendeploy model ResNet50 menggunakan Gradio in Hugging
 
 <img align="center" src="https://github.com/triwahyupra/project1_gender_recognition/blob/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/thumbnail%20picture/deploy.png" alt="Deployment" width="1000" height="500">
 
+## Notebook and Slides for Presentation
 
 Project ini dikerjakan secara kolaboratif oleh kelompok CV D -Alan Turing, Beberapa Notebook yang dikerjakan oleh anggota Tim dapat diakses pada [FOLDER NOTEBOOK](https://github.com/triwahyupra/project1_gender_recognition/tree/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/notebook)
 
 Dan notebook utama yang digunakan untuk merangkum performa setiap model dapat diakses pada [NOTEBOOK UTAMA](https://github.com/triwahyupra/project1_gender_recognition/blob/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/notebook/Satriaji/Satriaji_project1.ipynb)
-  
 
+Untuk file presentasi (pptx file) dapat diakses pada [FILE PRESENTASI](https://github.com/triwahyupra/project1_gender_recognition/blob/6d0fc820beae91d7834a19d9b2ff103b29a193f6/Project%201_Face%20Recognition_CV%20D.pptx)
+  
 ## 📧 Contact
 
 Jika Anda memiliki pertanyaan, masukan, atau ingin berkontribusi pada proyek ini, jangan ragu untuk menghubungi kontak berikut:
