@@ -145,7 +145,7 @@ Pada tahap ini, hasil pengujian model dari setiap algoritma pengoptimalan fine t
   <img src="https://github.com/triwahyupra/project1_gender_recognition/blob/df3e10c2b33c36dbb0a8d52f278c9688f75ddbff/thumbnail%20picture/Model%20Accuracy%20Transfer%20Learning.png" alt="Grafik accuracy transfer learning" width="500" height="400" />
 </p>
 
-Dari hasil train dan evaluation, terlihat bahwa ResNet50 dan ResNet101 mencapai akurasi validasi yang relatif sama dan merupakan yang tertinggi dari pengoptimalan fine tuning dengan selisih hanya 0,10%, hal ini menunjukkan bahwa arsitektur ini mungkin merupakan pilihan yang baik untuk tugas klasifikasi gender pada dataset CelebA.
+Dari hasil train dan evaluation, terlihat bahwa ResNet50 dan ResNet101 mencapai akurasi validasi yang relatif sama dan merupakan yang tertinggi dari pengoptimalan fine tuning dengan selisih hanya 0,10%, hal ini menunjukkan bahwa arsitektur ini berkemungkinan besar menjadi pilihan terbaik untuk tugas klasifikasi gender pada dataset CelebA.
 
 ### Inference Time
 
