@@ -188,7 +188,7 @@ Jika Anda memiliki pertanyaan, masukan, atau ingin berkontribusi pada proyek ini
 
 - Nama: [ Tri Wahyu Prabowo ]
 - Email: [ triwahyu@reefgen.io ]
-- LinkedIn: [ [triwahyupra](https://www.linkedin.com/in/tri-wahyu-prabowo-465b50141) ]
+- LinkedIn: [ [triwahyupra](https://www.linkedin.com/in/triwahyupra) ]
 
 Terima kasih atas dukungan dan kontribusi Anda!
 
